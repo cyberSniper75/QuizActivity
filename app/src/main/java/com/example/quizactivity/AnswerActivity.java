@@ -48,8 +48,6 @@ public class AnswerActivity extends AppCompatActivity {
         btnBack.setOnClickListener(view ->{
             finish();
         });
-
-
     }
 
     private void checkAnswer(boolean value_answer){
@@ -60,6 +58,4 @@ public class AnswerActivity extends AppCompatActivity {
             txtAnswer.setText(R.string.false_msg);
         }
     }
-
-
 }

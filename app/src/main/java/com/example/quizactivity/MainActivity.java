@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_ANSWER = "ANSWER";
     private static final String KEY_ANSWER_SHOW = "ANSWER_SHOW";
 
-    private boolean trampa;
+    private static boolean trampa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null){
             currentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
         }
-
 
         btnTrue = findViewById(R.id.btnTrue);
         btnFalse = findViewById(R.id.btnFalse);
@@ -71,9 +70,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(view ->{
-            currentIndex = (currentIndex + 1) % listQuestion.length;
-            updateQuestion();
-            trampa = false;
+            if(!trampa) {
+                currentIndex = (currentIndex + 1) % listQuestion.length;
+                updateQuestion();
+                trampa = false;
+            }
         });
     }
 
@@ -112,5 +113,4 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, msgRId, Toast.LENGTH_SHORT).show();
     }
-
 }
